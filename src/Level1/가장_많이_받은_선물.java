@@ -1,6 +1,5 @@
-package week_1;
+package Level1;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

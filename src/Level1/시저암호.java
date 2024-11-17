@@ -1,4 +1,4 @@
-package week_1;
+package Level1;
 
 public class 시저암호 {
     class Solution {

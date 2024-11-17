@@ -1,4 +1,4 @@
-package week_1;
+package Level1;
 
 public class 자릿수_더하기 {
     class Solution {

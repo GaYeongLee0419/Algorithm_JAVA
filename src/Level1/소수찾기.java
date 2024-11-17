@@ -1,4 +1,4 @@
-package week_1;
+package Level1;
 
 public class 소수찾기 {
     class Solution {

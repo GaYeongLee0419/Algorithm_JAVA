@@ -1,4 +1,4 @@
-package week_1;
+package Level1;
 
 public class 삼총사 {
     public int solution(int[] number) {
