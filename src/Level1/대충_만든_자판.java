@@ -42,12 +42,4 @@ public class 대충_만든_자판 {
     }
 }
 
-    public static void main(String[] args) {
-        String[] keyMap = {"ABACD", "BCEFD"};
-        String[] targets = {"ABCD", "AABB"};
-
-        대충_만든_자판 sol = new 대충_만든_자판();
-        int[] result = sol.solution(keyMap, targets);
-        Arrays.stream(result).forEach(System.out::println);
-    }
 
