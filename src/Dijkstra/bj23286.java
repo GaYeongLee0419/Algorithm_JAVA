@@ -68,12 +68,10 @@ public class bj23286 {
 
             for (Node next : graph[cur.v]) {
                 int max = Math.max(cur.e, next.e);
-
                 if (max < distance[next.v]) {
                     distance[next.v] = max;
                     pq.offer(new Node(next.v, distance[next.v]));
                 }
-
             }
         }
 
