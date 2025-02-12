@@ -8,9 +8,8 @@ public class bj2343 {
     static int N;
 
     public static int binarySearch(int start, int end, int target) {
-        int mid = 0;
         while (start < end) {
-            mid = (start + end) / 2;
+            int mid = (start + end) / 2;
             if (count(mid) > target) {
                 start = mid + 1;
             } else {
@@ -18,7 +17,7 @@ public class bj2343 {
             }
         }
 
-        return mid;
+        return start;
     }
 
     public static int count(int mid) {
@@ -46,11 +45,13 @@ public class bj2343 {
         st = new StringTokenizer(br.readLine());
         lectures = new int[N];
 
-        for (int i = 0; i < N; i++) lectures[i] = Integer.parseInt(st.nextToken());
+        int max = 0;
+        for (int i = 0; i < N; i++) {
+            lectures[i] = Integer.parseInt(st.nextToken());
+            max = Math.max(max, lectures[i]);
+        }
 
-        Arrays.sort(lectures);
         int sum = Arrays.stream(lectures).sum();
-        int max = lectures[N - 1];
 
         System.out.println(binarySearch(max, sum, M));
 
