@@ -1,26 +1,25 @@
 package BinarySearch;
 
+import java.util.Stack;
+
 public class Programmers_뒤에있는큰수찾기 {
     static class Solution {
         public int[] solution (int[] numbers) {
 
             int length = numbers.length;
             int[] answer = new int[length];
+            Stack<Integer> stack = new Stack<>();
 
-            int left = 0, right = 1;
-            while (right < length) {
-                while (numbers[left] >= numbers[right]) {
-                    if (right == length - 1) break;
-                    right++;
+            for (int i = 0; i < length; i++) {
+                while (!stack.isEmpty() && numbers[stack.peek()] < numbers[i]) {
+                    answer[stack.pop()] = numbers[i];
                 }
-
-                if (numbers[left] < numbers[right]) answer[left] = numbers[right];
-                else answer[left] = -1;
-                left++;
-                right = left + 1;
+                stack.push(i);
             }
 
-            answer[length - 1] = -1;
+            while (!stack.isEmpty()) {
+                answer[stack.pop()] = -1;
+            }
 
             return answer;
         }
