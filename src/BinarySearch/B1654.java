@@ -9,26 +9,22 @@ public class B1654 {
     static int K, N;
     static int[] lans;
 
-    static int binarySearch(int start, int end, int target) {
+    static int binarySearch(long start, long end, int target) {
 
         while (start <= end) {
-            int mid = (start + end) / 2;
+            long mid = (start + end) / 2;
 
             if (getCount(mid) >= target) start = mid + 1;
             else end = mid - 1;
         }
 
-        return end;
+        return (int)end;
     }
 
-    static int getCount(int length) {
+    static long getCount(long length) {
 
-        int count = 0;
-
-        for (int lan : lans) {
-            if (lan <= length) continue;
-            count++;
-        }
+        long count = 0;
+        for (int lan : lans) count += lan / length;
 
         return count;
     }
@@ -47,8 +43,6 @@ public class B1654 {
             lans[i] = Integer.parseInt(st.nextToken());
             max = Math.max(max, lans[i]);
         }
-
-        for (int lan : lans) System.out.println(lan);
 
         System.out.println(binarySearch(1, max, N));
 
