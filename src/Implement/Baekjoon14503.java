@@ -11,7 +11,6 @@ public class Baekjoon14503 {
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
     static int[][] map;
-
     static int n, m;
     static int r, c, d;
 
@@ -32,59 +31,50 @@ public class Baekjoon14503 {
             map[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         }
 
-
+        System.out.println(clean());
     }
 
-    static void robot() {
+    static int clean() {
+        int result = 0;
+
         while (true) {
+
             //1. 현재 칸이 아직 청소되지 않은 경우, 현재 칸을 청소한다.
-            if (!isCleaning(r, c)) {
-                map[r][c] = 1;
+            if (map[r][c] == 0) {
+                map[r][c] = 2;
+                result++;
             }
 
-            // 현재 칸의 주변 4칸을 탐색
-            int count = 0;
+            boolean moved = false;
+            //2. 현재 칸의 주변 4칸을 탐색
             for (int i = 0; i < 4; i++) {
-                int nx = r + dx[i], ny = c + dy[i];
+                turn_left();
+                int nx = r + dx[d], ny = c + dy[d];
 
-                if (isCleaning(nx, ny)) count++;
-                else {
-                    // 반 시계 방향으로 90도 회전
-                    turn_left();
-                    // 바라보는 방향을 기준으로 앞쪽 칸이 청소되지 않은 빈 칸인 경우
-                    if (!isCleaning(r + dx[d], c + dy[d])) {
-                        // 바라보는 방향으로 한 칸 전진
-                        nx += dx[d];
-                        ny += dy[d];
-
-                        if (isInArea(nx, ny)) {
-                            r = nx;
-                            c = ny;
-
-                        }
-                    }
-                }
-            }
-            // 현재 칸의 주변 4칸 중 청소되지 않은 빈 칸이 없는 경우
-            if (count == 4) {
-                //바라보는 방향을 유지한 채로 한 칸 후진할 수 있다면 한 칸 후진
-                if (isInArea(r - dx[d], c - dy[d])) {
-                    r -= dx[d];
-                    c -= dy[d];
-                }
-                //후진 불가능하면 작동 멈춤
-                else {
-
+                if (isInArea(nx, ny) && map[nx][ny] == 0){
+                    r = nx;
+                    c = ny;
+                    moved = true;
                     break;
                 }
             }
+
+            // 청소할 공간이 없는 경우 후진
+            if (!moved) {
+                int back_x = r - dx[d];
+                int back_y = c - dy[d];
+
+                if (isInArea(back_x, back_y) && map[back_x][back_y] != 1) {
+                    r = back_x;
+                    c = back_y;
+                } else {
+                    break;
+                }
+            }
+
         }
 
-    }
-
-    // 현재 칸이 청소되어있는 칸인지 확인
-    static boolean isCleaning(int r, int c) {
-        return map[r][c] == 1;
+        return result;
     }
 
     // 반 시계 방향으로 90도 회전
