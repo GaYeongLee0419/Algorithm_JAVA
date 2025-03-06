@@ -1,4 +1,4 @@
-package BFS;
+package DFS;
 
 public class TargetNumber {
     public int solution(int[] numbers, int target) {
