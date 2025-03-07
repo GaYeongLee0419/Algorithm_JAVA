@@ -1,4 +1,4 @@
-package 정렬;
+package Sort;
 
 import java.io.*;
 import java.util.*;
