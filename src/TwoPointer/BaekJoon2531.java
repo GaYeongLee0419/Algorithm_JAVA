@@ -50,5 +50,4 @@ public class BaekJoon2531 {
 
         return max;
     }
-
 }
