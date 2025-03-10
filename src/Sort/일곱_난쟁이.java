@@ -1,9 +1,7 @@
-package 정렬;
+package Sort;
 
 import java.io.*;
 import java.util.*;
-
-import static java.lang.System.out;
 
 public class 일곱_난쟁이 {
     public static void solution(int[] data){
