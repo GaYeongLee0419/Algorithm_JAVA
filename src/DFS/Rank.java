@@ -21,8 +21,8 @@ public class Rank {
     public static int floydWashall(int n, int[][] visited) {
         int answer = 0;
 
-        for (int i = 1; i <= n; i++) {
-            for (int k = 1; k <= n; k++) {
+        for (int k = 1; k <= n; k++) {
+            for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= n; j++) {
                     if (visited[i][k] == 1 && visited[k][j] == 1) {
                         visited[i][j] = 1;
