@@ -4,28 +4,24 @@ import java.util.Stack;
 
 public class RightCharacter {
     boolean solution(String s) {
-        Stack<Character> stack = new Stack<>();
 
-        if (s.substring(0, 1).equals(')'))
+        if (s.charAt(0) == ')')
             return false;
+
+        int count = 0;
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
             if (c == '(') {
-                stack.push(c);
-            } else if (!stack.isEmpty()) {
-                stack.pop();
+                count++;
             } else {
-                return false;
+                if (count == 0) return false;
+                count--;
             }
         }
 
-        if (stack.size() == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return count == 0;
     }
 
     public static void main(String[] args) {
