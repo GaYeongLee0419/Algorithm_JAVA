@@ -26,6 +26,7 @@ public class MoreSpicy {
             count++;
 
         }
+        if (pq.poll() >= k) return count;
 
         return -1;
     }
