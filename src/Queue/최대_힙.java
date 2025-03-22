@@ -1,4 +1,4 @@
-package 큐;
+package Queue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
