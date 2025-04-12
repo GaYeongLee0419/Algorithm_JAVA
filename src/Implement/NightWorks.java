@@ -19,15 +19,9 @@ public class NightWorks {
             work--;
             pq.offer(work);
             n--;
-            for (int i : pq) {
-                System.out.println(i);
-            }
-            System.out.println("============");
+
         }
 
-        for (int i : pq) {
-            System.out.println(i);
-        }
         long result = 0;
         while (!pq.isEmpty()) {
             int work = pq.poll();
